@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>zakria | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--c1:#051F20;--c2:#0B2B26;--c3:#163832;--c4:#235347;--c5:#8EB69B;--c6:#DAF1DE}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Inter,sans-serif;background:linear-gradient(180deg,var(--c1),var(--c3));color:var(--c6)}
+    a{text-decoration:none;color:inherit}
+    header{display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:rgba(5,31,32,.85)}
+    nav a{margin-left:22px;opacity:.8}nav a:hover{opacity:1}
+    section{padding:100px 60px}
+    h1{font-size:3rem}
+    .grid{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+    .card{background:linear-gradient(180deg,var(--c2),var(--c3));padding:22px;border-radius:18px;cursor:pointer;transition:.3s}
+    .card:hover{transform:translateY(-6px)}
+    .thumb{height:160px;background:var(--c4);border-radius:14px;margin-bottom:15px;display:flex;align-items:center;justify-content:center}
+    footer{text-align:center;padding:50px;opacity:.6}
+  </style>
+</head>
+<body>
+<header>
+  <strong>zakria</strong>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="projects.html">My Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<section>
+  <h1>Portfolio</h1>
+  <p>Selected client work and professional edits.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="thumb">Video</div>
+      <strong>YouTube Cinematic Edit</strong>
+      <p>High retention, cinematic pacing.</p>
+    </div>
+    <div class="card">
+      <div class="thumb">Video</div>
+      <strong>Short Reel</strong>
+      <p>Optimized for social media.</p>
+    </div>
+  </div>
+</section>
+<footer>© 2026 zakria</footer>
+</body>
+</html>

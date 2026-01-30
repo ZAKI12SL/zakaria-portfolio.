@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>zakria | My Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--c1:#051F20;--c2:#0B2B26;--c3:#163832;--c4:#235347;--c5:#8EB69B;--c6:#DAF1DE}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Inter,sans-serif;background:linear-gradient(180deg,var(--c1),var(--c3));color:var(--c6)}
+    a{text-decoration:none;color:inherit}
+
+    header{display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:rgba(5,31,32,.85)}
+    nav a{margin-left:22px;opacity:.8}nav a:hover{opacity:1}
+
+    section{padding:100px 60px}
+    h1{font-size:3rem}
+    p.subtitle{opacity:.85;max-width:520px;margin-top:10px}
+
+    .grid{margin-top:50px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+
+    .card{
+      background:linear-gradient(180deg,var(--c2),var(--c3));
+      padding:24px;border-radius:20px;cursor:pointer;transition:.3s;position:relative;overflow:hidden
+    }
+    .card:hover{transform:translateY(-8px)}
+
+    .thumb{
+      height:170px;border-radius:16px;background:var(--c4);
+      display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-weight:600;opacity:.9
+    }
+
+    .tag{
+      position:absolute;top:20px;right:20px;
+      background:var(--c5);color:var(--c1);
+      padding:6px 14px;border-radius:20px;font-size:.75rem;font-weight:600
+    }
+
+    footer{text-align:center;padding:50px;opacity:.6}
+
+    @media(max-width:768px){header{padding:20px}section{padding:80px 20px}h1{font-size:2.3rem}}
+  </style>
+</head>
+<body>
+
+<header>
+  <strong>zakria</strong>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="projects.html">My Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section>
+  <h1>My Projects</h1>
+  <p class="subtitle">Personal and long-term creative projects that reflect my style and skills.</p>
+
+  <div class="grid">
+    <div class="card">
+      <span class="tag">Personal</span>
+      <div class="thumb">Minecraft Series</div>
+      <strong>Minecraft YouTube Series</strong>
+      <p>A long-term gaming series focused on storytelling and clean editing.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Motion</span>
+      <div class="thumb">Motion Pack</div>
+      <strong>Custom Motion Pack</strong>
+      <p>Transitions, titles and effects built for fast and cinematic edits.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Branding</span>
+      <div class="thumb">Visual Identity</div>
+      <strong>Channel Rebrand</strong>
+      <p>Complete visual redesign including thumbnails and animations.</p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 zakria</footer>
+
+</body>
+</html>
