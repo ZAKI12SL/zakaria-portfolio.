@@ -4,50 +4,185 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>zakria | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  
   <style>
-    :root{--c1:#051F20;--c2:#0B2B26;--c3:#163832;--c4:#235347;--c5:#8EB69B;--c6:#DAF1DE}
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:Inter,sans-serif;background:linear-gradient(180deg,var(--c1),var(--c3));color:var(--c6)}
-    a{text-decoration:none;color:inherit}
-    header{display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:rgba(5,31,32,.85)}
-    nav a{margin-left:22px;opacity:.8}nav a:hover{opacity:1}
-    section{padding:100px 60px}
-    h1{font-size:3rem}
-    .grid{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
-    .card{background:linear-gradient(180deg,var(--c2),var(--c3));padding:22px;border-radius:18px;cursor:pointer;transition:.3s}
-    .card:hover{transform:translateY(-6px)}
-    .thumb{height:160px;background:var(--c4);border-radius:14px;margin-bottom:15px;display:flex;align-items:center;justify-content:center}
-    footer{text-align:center;padding:50px;opacity:.6}
+    /* --- قسم الـ CSS المدمج --- */
+    :root {
+        --c1: #051F20; --c2: #0B2B26; --c3: #163832;
+        --c4: #235347; --c5: #8EB69B; --c6: #DAF1DE;
+        --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(180deg, var(--c1), var(--c3));
+        color: var(--c6);
+        min-height: 100vh;
+        line-height: 1.6;
+    }
+
+    /* تغيير الخط عند التحويل للعربية */
+    body[dir="rtl"] { font-family: 'Cairo', sans-serif; }
+
+    header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 20px 60px; background: rgba(5, 31, 32, 0.9);
+        backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    nav { display: flex; align-items: center; gap: 25px; }
+    nav a { opacity: 0.7; transition: var(--transition); text-decoration: none; color: inherit; }
+    nav a:hover, nav a.active { opacity: 1; color: var(--c5); }
+
+    .lang-btn {
+        background: rgba(255, 255, 255, 0.1); padding: 6px 14px;
+        border-radius: 20px; cursor: pointer; font-size: 0.85rem;
+    }
+
+    section { padding: 80px 60px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+    .card {
+        background: linear-gradient(180deg, var(--c2), var(--c3));
+        padding: 20px; border-radius: 20px; cursor: pointer;
+        transition: var(--transition); border: 1px solid transparent;
+    }
+    .card:hover { transform: translateY(-10px); border-color: var(--c4); }
+
+    .thumb {
+        width: 100%; height: 180px; background: #000;
+        border-radius: 15px; margin-bottom: 15px; overflow: hidden; position: relative;
+    }
+    /* تنسيق خاص للبطاقة الطولية (Reel/Shorts) */
+    .card.reel .thumb { height: 480px; aspect-ratio: 9/16; }
+
+    .thumb iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+
+    /* النافذة المنبثقة (Modal) */
+    .modal {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
+        display: none; justify-content: center; align-items: center; z-index: 2000;
+    }
+    .modal.active { display: flex; }
+    .modal-content { width: 90%; max-width: 800px; background: var(--c2); padding: 25px; border-radius: 24px; position: relative; }
+    .close-btn { position: absolute; top: -45px; right: 0; color: #fff; font-size: 2rem; cursor: pointer; }
+
+    @media (max-width: 768px) { header, section { padding: 20px; } nav { display: none; } }
   </style>
 </head>
 <body>
+
 <header>
-  <strong>zakria</strong>
+  <strong style="font-size:1.5rem; color:var(--c5)">zakria</strong>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="projects.html">My Projects</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html" data-tr="home">Home</a>
+    <a href="portfolio.html" class="active" data-tr="portfolio">Portfolio</a>
+    <a href="contact.html" data-tr="contact">Contact</a>
+    <div class="lang-btn" onclick="toggleLang()">EN / AR</div>
   </nav>
 </header>
+
 <section>
-  <h1>Portfolio</h1>
-  <p>Selected client work and professional edits.</p>
+  <h1 data-tr="portTitle" style="text-align:center; margin-bottom:40px;">Selected Works</h1>
+  
   <div class="grid">
-    <div class="card">
-      <div class="thumb">Video</div>
-      <strong>YouTube Cinematic Edit</strong>
-      <p>High retention, cinematic pacing.</p>
+    <div class="card" onclick="openModal('7_EDJ1E3_9Q', 'Cinematic Edit', 'Professional landscape montage.', 'yt')">
+      <div class="thumb">
+        <iframe src="https://www.youtube.com/embed/7_EDJ1E3_9Q?autoplay=1&mute=1&loop=1&playlist=7_EDJ1E3_9Q&controls=0"></iframe>
+      </div>
+      <strong data-tr="ytTitle">Cinematic Edit</strong>
+      <p data-tr="ytDesc">High-quality YouTube content.</p>
     </div>
-    <div class="card">
-      <div class="thumb">Video</div>
-      <strong>Short Reel</strong>
-      <p>Optimized for social media.</p>
+
+    <div class="card reel" onclick="openModal('65qVWVp4xDE', 'YouTube Shorts', 'Dynamic vertical editing.', 'short')">
+      <div class="thumb">
+        <iframe src="https://www.youtube.com/embed/65qVWVp4xDE?autoplay=1&mute=1&loop=1&playlist=65qVWVp4xDE&controls=0"></iframe>
+      </div>
+      <strong data-tr="shortTitle">Social Media</strong>
+      <p data-tr="shortDesc">Vertical video specialist.</p>
     </div>
   </div>
 </section>
-<footer>© 2026 zakria</footer>
+
+<div class="modal" id="videoModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <div id="modalVideoArea" style="background:#000; border-radius:15px; overflow:hidden;"></div>
+    <div style="margin-top:20px">
+      <h2 id="mTitle"></h2>
+      <p id="mDesc" style="opacity:.8; margin-top:10px;"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // نصوص الترجمة
+  const translations = {
+    en: {
+        home: "Home", portfolio: "Portfolio", contact: "Contact",
+        portTitle: "Creative Portfolio", ytTitle: "Cinematic Montage",
+        ytDesc: "Professional video editing for YouTube.",
+        shortTitle: "Shorts & Reels", shortDesc: "High retention vertical content."
+    },
+    ar: {
+        home: "الرئيسية", portfolio: "أعمالي", contact: "تواصل معي",
+        portTitle: "معرض الأعمال", ytTitle: "مونتاج [جراف]",
+        ytDesc: "تعديل فيديوهات احترافي لمنصة يوتيوب.",
+        shortTitle: "ريلز وشورتس", shortDesc: "محتوى طولي جذاب وسريع الانتشار."
+    }
+  };
+
+  // وظيفة فتح الفيديو
+  function openModal(id, title, desc, type) {
+    const modal = document.getElementById('videoModal');
+    const area = document.getElementById('modalVideoArea');
+    document.getElementById('mTitle').innerText = title;
+    document.getElementById('mDesc').innerText = desc;
+
+    // ضبط الأبعاد إذا كان شورتس
+    if(type === 'short') {
+        area.style.aspectRatio = "9/16";
+        area.style.maxWidth = "350px";
+        area.style.margin = "0 auto";
+    } else {
+        area.style.aspectRatio = "16/9";
+        area.style.maxWidth = "100%";
+    }
+
+    area.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>`;
+    modal.classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('videoModal').classList.remove('active');
+    document.getElementById('modalVideoArea').innerHTML = '';
+  }
+
+  // التحكم باللغة
+  let lang = localStorage.getItem('zak_lang') || 'en';
+  function updateLang() {
+    document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-tr]').forEach(el => {
+        const key = el.getAttribute('data-tr');
+        el.innerText = translations[lang][key];
+    });
+  }
+  function toggleLang() {
+    lang = lang === 'en' ? 'ar' : 'en';
+    localStorage.setItem('zak_lang', lang);
+    updateLang();
+  }
+  updateLang();
+
+  // إغلاق المودال عند الضغط خارج المحتوى
+  window.onclick = function(e) { if(e.target.id === 'videoModal') closeModal(); }
+</script>
+
 </body>
 </html>

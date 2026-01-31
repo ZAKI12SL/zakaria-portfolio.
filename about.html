@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>zakria | About</title>
@@ -12,32 +13,34 @@
     a{text-decoration:none;color:inherit}
 
     header{display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:rgba(5,31,32,.85)}
-    nav a{margin-left:22px;opacity:.8}nav a:hover{opacity:1}
+    nav a{margin-left:22px;opacity:.8;transition:.3s}
+    nav a:hover, nav a.active{opacity:1;color:var(--c5)}
 
     section{padding:110px 60px}
     h1{font-size:3rem;margin-bottom:20px}
 
     .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-
     .bio p{opacity:.9;line-height:1.8}
 
     .skills{margin-top:30px}
     .skill{margin-bottom:18px}
-    .skill span{font-size:.9rem;opacity:.85}
+    .skill span{font-size:.9rem;opacity:.85;display:flex;justify-content:space-between}
     .bar{height:8px;background:var(--c2);border-radius:10px;overflow:hidden;margin-top:6px}
-    .fill{height:100%;background:linear-gradient(90deg,var(--c4),var(--c5))}
-
-    .card{
-      background:linear-gradient(180deg,var(--c2),var(--c3));
-      padding:40px;border-radius:24px
+    
+    /* Animation Added Here */
+    .fill{
+      height:100%;background:linear-gradient(90deg,var(--c4),var(--c5));
+      width:0; /* Start at 0 */
+      animation: loadSkill 1.5s ease-out forwards;
     }
+    @keyframes loadSkill { to { width: var(--w); } }
+
+    .card{background:linear-gradient(180deg,var(--c2),var(--c3));padding:40px;border-radius:24px}
 
     footer{text-align:center;padding:50px;opacity:.6}
 
     @media(max-width:900px){
-      section{padding:80px 20px}
-      .about-wrap{grid-template-columns:1fr}
-      h1{font-size:2.3rem}
+      section{padding:80px 20px} .about-wrap{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -49,7 +52,7 @@
     <a href="index.html">Home</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="projects.html">My Projects</a>
-    <a href="about.html">About</a>
+    <a href="about.html" class="active">About</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
@@ -61,29 +64,28 @@
     <div class="bio">
       <p>
         I'm Zakaria, a graphic designer and video editor. I have experience that qualifies me to work with large companies.
-        I create highly professional videos, whether cinematic or regular YouTube content. This journey allowed me to
-        collaborate with professionals in the field and work with many interested clients.
+        I create highly professional videos, whether cinematic or regular YouTube content.
       </p>
 
       <div class="skills">
         <div class="skill">
-          <span>Video Editing (Premiere Pro)</span>
-          <div class="bar"><div class="fill" style="width:90%"></div></div>
+          <span>Video Editing (Premiere pro) <b>90%</b></span>
+          <div class="bar"><div class="fill" style="--w:90%"></div></div>
         </div>
         <div class="skill">
-          <span>Motion Design (After Effects)</span>
-          <div class="bar"><div class="fill" style="width:80%"></div></div>
+          <span>Motion Design (AfterEfects) <b>80%</b></span>
+          <div class="bar"><div class="fill" style="--w:80%"></div></div>
         </div>
         <div class="skill">
-          <span>Graphic Design</span>
-          <div class="bar"><div class="fill" style="width:75%"></div></div>
+          <span>Graphic Design <b>75%</b></span>
+          <div class="bar"><div class="fill" style="--w:75%"></div></div>
         </div>
       </div>
     </div>
 
     <div class="card">
       <h2>What I Do</h2>
-      <p style="margin-top:15px;opacity:.9">
+      <p style="margin-top:15px;opacity:.9;line-height:1.6">
         • Cinematic video editing<br>
         • YouTube & social media content<br>
         • Motion graphics & visual identity<br>
